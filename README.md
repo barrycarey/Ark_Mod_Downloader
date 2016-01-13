@@ -1,9 +1,8 @@
 **ARK Mod Downloader**
 ------------------------------
+As many know you cannot simply download ARK mods via SteamCMD.  The individual files come archived as .z files which will not work with a server. 
 
-As many know you cannot simply download ARK mods via SteamCMD.  The individual files come archived as .z files which will not work with a server.
-
-This tool works around this issue by downloading the mod and extracting the .z files.
+This tool works around this issue by downloading the mod and extracting the .z files. 
 
 **Usage**
 
@@ -13,13 +12,13 @@ You can either run this tool via the .exe provided in the dist folder or directl
 
 **--workingdir** - (Optional) - This is the home directory of your ARK server
 
-**--modid** - The ID of the mod you wish to download
+**--modid** - The ID of the mod you wish to download 
 
 **--steamcmd** - (Optional) - The directory to the SteamCMD exe you wish to use.  If not provided the tool will download SteamCMD to the CWD
 
 **--update** - (Optional) - This will update all current mods installed on the server
 
-**--namefile** - (Optional) - This will create a "Modname.name" file in the mod folder.
+**--namefile** - (Optional) - This will create a "Modname.name" file in the mod folder. 
 
 The only required argument is the --modid if you run this script from the root of your Game Server.
 
