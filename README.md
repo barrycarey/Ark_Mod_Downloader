@@ -12,7 +12,7 @@ You can either run this tool via the .exe provided in the dist folder or directl
 
 **--workingdir** - (Optional) - This is the home directory of your ARK server
 
-**--modid** - The ID of the mod you wish to download 
+**--modid** - The IDs of the mod you wish to download.  Space separated list of Mod IDs to download
 
 **--steamcmd** - (Optional) - The directory to the SteamCMD exe you wish to use.  If not provided the tool will download SteamCMD to the CWD
 

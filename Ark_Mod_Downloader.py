@@ -11,7 +11,7 @@ import zipfile
 
 class ArkModDownloader():
 
-    def __init__(self, steamcmd, modid, working_dir, mod_update, modname):
+    def __init__(self, steamcmd, modids, working_dir, mod_update, modname):
 
         # I not working directory provided, check if CWD has an ARK server.
         self.working_dir = working_dir
@@ -37,12 +37,13 @@ class ArkModDownloader():
             self.update_mods()
 
         # If any issues happen in download and extract chain this returns false
-        if modid:
-            if self.download_mod(modid):
-                if self.move_mod(modid):
-                    print("[+] Mod Installation Finished")
-            else:
-                print("[+] There was problems with the mod download.  See above errors")
+        if modids:
+            for mod in modids:
+                if self.download_mod(mod):
+                    if self.move_mod(mod):
+                        print("[+] Mod {} Installation Finished".format(str(mod)))
+                else:
+                    print("[+] There was as problem downloading mod {}.  See above errors".format(str(mod)))
 
     def create_mod_name_txt(self, mod_folder, modid):
         print(os.path.join(mod_folder, self.map_names[0] + " - " + modid + ".txt"))
@@ -58,7 +59,6 @@ class ArkModDownloader():
         else:
             print("[x] Current Directory Does Not Contain An ARK Server. Aborting")
             sys.exit(0)
-
 
     def steamcmd_check(self):
         """
@@ -389,7 +389,7 @@ class ArkModDownloader():
 def main():
     parser = argparse.ArgumentParser(description="A utility to download ARK Mods via SteamCMD")
     parser.add_argument("--workingdir", default=None, dest="workingdir", help="Game server home directory.  Current Directory is used if this is not provided")
-    parser.add_argument("--modid", default=None, dest="modid", help="ID of Mod To Download")
+    parser.add_argument("--modid", nargs="+", default=None, dest="modids", help="ID of Mod To Download")
     parser.add_argument("--steamcmd", default=None, dest="steamcmd", help="Path to SteamCMD")
     parser.add_argument("--update", default=None, action="store_true", dest="mod_update", help="Update Existing Mods.  ")
     parser.add_argument("--namefile", default=None, action="store_true", dest="modname", help="Create a .name File With Mods Text Name")
@@ -401,7 +401,7 @@ def main():
         print("[?] Please provide a Mod ID to download or use --update to update your existing mods")
         sys.exit(0)
 
-    ArkModDownloader(args.steamcmd, args.modid, args.workingdir, args.mod_update, args.modname)
+    ArkModDownloader(args.steamcmd, args.modids, args.workingdir, args.mod_update, args.modname)
 
 
 
