@@ -401,7 +401,7 @@ def main():
 
     args = parser.parse_args()
 
-    if not args.modid and not args.mod_update:
+    if not args.modids and not args.mod_update:
         print("[x] No Mod ID Provided and Update Not Selected.  Aborting")
         print("[?] Please provide a Mod ID to download or use --update to update your existing mods")
         sys.exit(0)
